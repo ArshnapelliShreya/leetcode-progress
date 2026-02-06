@@ -1,0 +1,22 @@
+1343. Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold
+class Solution {
+    public int numOfSubarrays(int[] arr, int k, int threshold) {
+      int n=arr.length;
+      int c=0,sum=0,l=0,avg=0;;
+      for(int r=0;r<n;r++){
+        sum+=arr[r];
+        if(r-l==k){
+            sum-=arr[l];
+            l++;
+        }
+        if(r-l+1==k){
+            avg=sum/k;
+            if(avg>=threshold){
+                c++;
+            }
+        }
+
+      }
+     return c; 
+    }
+}
