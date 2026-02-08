@@ -1,0 +1,17 @@
+2465. Number of Distinct Averages
+class Solution {
+    public int distinctAverages(int[] nums) {
+        Arrays.sort(nums);
+        int n=nums.length;
+        int l=0,r=n-1;
+        double avg=0;
+        HashSet<Integer> hs=new HashSet<>();
+        while(l<r){
+            hs.add(nums[l]+nums[r]);
+            l++;
+            r--;
+        }
+        int s=hs.size();
+        return s;
+    }
+}
