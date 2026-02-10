@@ -1,0 +1,28 @@
+2024. Maximize the Confusion of an Exam
+class Solution {
+    public int maxConsecutiveAnswers(String answerKey, int k) {
+        int n=answerKey.length();
+        int c_t=0,c_f=0,ans=0,l=0;
+        for(int i=0;i<n;i++){
+            char ch=answerKey.charAt(i);
+            if(ch=='T'){
+                c_t++;
+            }
+            else{
+                c_f++;
+            }
+            while(Math.min(c_t,c_f)>k){
+                char c=answerKey.charAt(l);
+                if(c=='T'){
+                    c_t--;
+                }
+                else{
+                    c_f--;
+                }
+                l++;
+            }
+            ans=Math.max(ans,i-l+1);
+        }
+        return ans;
+    }
+}
