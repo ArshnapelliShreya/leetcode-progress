@@ -1,0 +1,28 @@
+242. Valid Anagram
+class Solution {
+    public boolean isAnagram(String s, String t) {
+    HashMap<Character,Integer> hm1=new HashMap<>();
+    HashMap<Character,Integer> hm2=new HashMap<>();
+    if(s.length()!=t.length()){
+        return false;
+    }
+    for(int i=0;i<s.length();i++){
+        hm1.put(s.charAt(i),hm1.getOrDefault(s.charAt(i),0)+1);
+    }
+    for(int i=0;i<t.length();i++){
+        hm2.put(t.charAt(i),hm2.getOrDefault(t.charAt(i),0)+1);
+    }
+    for(int i=0;i<s.length();i++){
+        char c=s.charAt(i);
+        if(!hm2.containsKey(c)){
+         return false;
+        }
+        int a=hm1.get(c);
+        int b=hm2.get(c);
+        if(a!=b){
+            return false;
+        }
+    }
+    return true;
+    }
+}
