@@ -1,0 +1,27 @@
+930. Binary Subarrays With Sum
+class Solution {
+    public int atMost(int[] nums, int goal) {
+        if(goal<0){
+            return 0;
+        }
+        int n=nums.length;
+        int l=0,temp=0,ans=0;
+       for(int r=0;r<n;r++){
+            if(nums[r]==1){
+                temp++;
+            }
+            while(temp>goal){
+                if(nums[l] == 1){
+                    temp--;
+                }
+                l++;
+            }
+            ans+=r-l+1;
+       }
+       return ans;
+    }
+     public int numSubarraysWithSum(int[] nums, int goal) {
+     return atMost(nums,goal)-atMost(nums,goal-1);
+     }
+
+}
